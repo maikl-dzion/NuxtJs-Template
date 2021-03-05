@@ -20,6 +20,7 @@
 
 <script>
 
+import { mapActions, mapGetters } from 'vuex';
 import ApiService from '~/api/api.service';
 const api = new ApiService();
 
@@ -27,43 +28,41 @@ export default {
   name: "TaskBoard",
   data() {
     return {
-       taskItems : [],
+       // taskItems : [],
     }
+  },
+
+  computed : {
+     ...mapGetters({
+          taskItems :  'tasks/getTasks'
+     }),
+
+    // taskItems () {
+    //   let t = this.$store;
+    //   return [];
+    // },
   },
 
   methods : {
 
-    async getTasks() {
-        const response = await api.get('/task-board/list');
-        this.taskItems = response.data;
-    },
+    ...mapActions({
+         fetchTasks : 'tasks/fetchTasks'
+    }),
 
-    async fetchSomething() {
-       this.taskItems = await this.$axios.$get('/task-board/list')
-
-        // this.$axios.$get('/user/12345', {
-        //   cancelToken: source.token
-        // }).catch(error => {
-        //   if (this.$axios.isCancel(error)) {
-        //     console.log('Request canceled', error)
-        //   } else {
-        //     // handle error
-        //   }
-        // })
-        //
-        // this.$axios.$post('/user/12345', {
-        //   name: 'new name'
-        // }, {
-        //   cancelToken: source.token
-        // })
-
-    }
+    // async getTasks() {
+    //     const response = await api.get('/task-board/list');
+    //     this.taskItems = response;
+    // },
 
   },
 
   mounted() {
-     this.getTasks()
-     // this.fetchSomething()
+
+    this.fetchTasks();
+
+      // this.hello();
+      // this.$services();
+      // this.getTasks()
   },
 }
 </script>
