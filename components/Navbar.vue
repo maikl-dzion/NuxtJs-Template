@@ -249,7 +249,8 @@ export default {
         pageLinks : [
           { title : 'Главная', url : '/' },
           { title : 'Доска задач', url : '/task-board' },
-          { title : 'О нас', url : '/about' }
+          { title : 'Админ-панель', url : '/admin-panel' },
+          { title : 'О нас', url : '/about' },
         ]
     }
   }
