@@ -12,8 +12,10 @@
     <main class="container mx-auto" >
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 
+        <pre>User Id - {{getUserId}}</pre>
         <pre>{{userItems}}</pre>
         <pre>{{selectedUser}}</pre>
+
 
       </div>
     </main>
@@ -37,11 +39,16 @@ export default {
   computed : {
      ...mapGetters({
           userItems :  'user/getUsers',
+          useGetting : 'user/useGetting'
      }),
+
+    getUserId() {
+         return this.getStore('user', 'userId')
+    },
 
      selectedUser() {
          const fieldName = 'selectedUser';
-         return this.getStoreState('user', fieldName)
+         return this.getStore('user', fieldName)
      },
   },
 
@@ -68,6 +75,7 @@ export default {
      this.fetchUsers();
      this.getUserById(21);
   },
+
 }
 </script>
 

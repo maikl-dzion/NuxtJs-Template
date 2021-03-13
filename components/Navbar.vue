@@ -11,10 +11,14 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <nuxt-link to="/" active-class="nuxt-link-active" exact
+                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
+              > Главная </nuxt-link>
+
               <template v-for="item in pageLinks">
-                <nuxt-link :to="item.url"
+                <nuxt-link :to="item.url" active-class="nuxt-link-active"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
-                           >{{item.title}}</nuxt-link>
+                           > {{item.title}} </nuxt-link>
               </template>
 <!--              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2  text-sm font-medium">Reports</a>-->
             </div>
@@ -247,7 +251,7 @@ export default {
   data() {
     return {
         pageLinks : [
-          { title : 'Главная', url : '/' },
+          // { title : 'Главная', url : '/' },
           { title : 'Доска задач', url : '/task-board' },
           { title : 'Админ-панель', url : '/admin-panel' },
           { title : 'О нас', url : '/about' },
@@ -258,5 +262,8 @@ export default {
 </script>
 
 <style scoped>
-
+    .nuxt-link-active {
+      background: gainsboro;
+      color:black;
+    }
 </style>

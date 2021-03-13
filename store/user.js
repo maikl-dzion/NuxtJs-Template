@@ -2,7 +2,7 @@ import ApiService from '~/api/api.service';
 const api = new ApiService();
 
 export const state =  {
-    userId   : 0,
+    userId   : 22,
     userInfo : {},
     selectedUser : {},
     users : [],
@@ -43,8 +43,9 @@ export const getters = {
       return state.users;
   },
 
-  useGetting(state, fieldName){
+  useGetting : state => fieldName => {
      return state[fieldName];
   },
+  
 
 }
